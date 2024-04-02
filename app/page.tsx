@@ -2,7 +2,7 @@ import Image from 'next/image';
 import {redirect} from 'next/navigation';
 import {getSession, login, logout} from './lib';
 
-export default async function Home() {
+export default async function Login() {
   const session = await getSession();
   return (
     <section>
