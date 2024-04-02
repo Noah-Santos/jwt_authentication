@@ -1,9 +1,9 @@
+import Image from 'next/image';
 import {redirect} from 'next/navigation';
 import {getSession, login, logout} from './lib';
 
 export default function Home() {
   const session = getSession();
-
   return (
     <section>
       <form action={async (formdata)=>{
