@@ -22,14 +22,19 @@ export async function decrypt(input:string): Promise<any>{
 
 export async function login(formData: FormData){
     // verify credentials and get the user
-    const user = {email: formData.get('email'), password:formData.get('password'), name:'John'}
+    // console.log(process.env.SECRET_EMAIL)
+    if(formData.get('email') === process.env.SECRET_EMAIL && formData.get('password') === process.env.SECRET_PASSWORD){
+        const user = {email:process.env.SECRET_EMAIL, password:process.env.SECRET_PASSWORD, name:'Sherman'}
+        
+        // create the session
+        const expires = new Date(Date.now() + 2 * 60 * 1000);
+        const session = await encrypt({user, expires});
 
-    // create the session
-    const expires = new Date(Date.now() + 2 * 60 * 1000);
-    const session = await encrypt({user, expires});
-
-    // save the session in a cookie
-    cookies().set('session', session, {expires, httpOnly:true});
+        // save the session in a cookie
+        cookies().set('session', session, {expires, httpOnly:true});
+        return true;
+    }
+    return false;
 }
 
 export async function logout(){

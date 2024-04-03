@@ -8,8 +8,9 @@ export default async function Login() {
     <section>
       <form action={async (formdata)=>{
         'use server';
-        await login(formdata);
-        redirect('/');
+        if(await login(formdata)){
+          redirect('/home');
+        }
       }}>
         <input type="email" name="email" id='email' />
         <input type="password" name="password" id="password" />

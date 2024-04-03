@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import {redirect} from 'next/navigation';
-import {getSession, logout} from './lib';
+import {getSession, logout} from '../lib';
 
 export default async function Profile() {
     const session = await getSession();
