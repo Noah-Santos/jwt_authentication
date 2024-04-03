@@ -21,7 +21,7 @@ export default async function Home() {
             </nav>
 
             <div className={styles.homeCont}>
-                <p className={styles.home}>Hi! There's nothing here</p>
+                <p className={styles.home}>Hi! There&apos;s nothing here</p>
             </div>
         </section>
     );
