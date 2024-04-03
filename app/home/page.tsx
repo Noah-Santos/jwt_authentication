@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import {redirect} from 'next/navigation';
 import {getSession, logout} from '../lib';
 import styles from '../Styles/nav.module.css'
@@ -12,16 +11,18 @@ export default async function Home() {
                 <h1 className={styles.title}>Home</h1>
                 <div className={styles.linkCont}>
                     <Link href='/home' className={styles.link}>Home</Link>
-                    <Link href='/profile' onClick={async ()=>{
+                    <Link href='/profile'className={styles.link}>Profile</Link>
+                    <Link href='/' onClick={async ()=>{
                         'use server';
                         await logout();
                         redirect('/');
-                    }} className={styles.link}>Profile</Link>
-                    <Link href='/' className={styles.link}>Logout</Link>
+                    }} className={styles.link}>Logout</Link>
                 </div>
             </nav>
 
-            <pre>{JSON.stringify(session,null,2)}</pre>
+            <div className={styles.homeCont}>
+                <p className={styles.home}>Hi! There's nothing here</p>
+            </div>
         </section>
     );
 }
